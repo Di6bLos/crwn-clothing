@@ -1,3 +1,35 @@
+/* ==== STYLE RESET ==== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+text-decoration: none;
+  list-style: none;
+}
+*:disabled {
+background-color: grey;
+}
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  height: 100%;
+  overflow-y: auto;
+}
+img,
+picture {
+  width: 100%; /* Works better when inside a div */
+}
+
+/* ==================== */
+
+
+
+
+
 .categories-container {
   width: 100%;
   display: flex;
@@ -70,6 +102,35 @@
     p {
       font-weight: lighter;
       font-size: 16px;
+    }
+  }
+}
+
+.navigation {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  .logo-container {
+    height: 100%;
+    width: 70px;
+    padding: 25px;
+  }
+
+  .nav-links {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+
+    .nav-link {
+      padding: 10px 15px;
+      cursor: pointer;
+      color: black;
     }
   }
 }

@@ -1,13 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+// imports the components from the main app file and the routes
+import App from './App';
+import Home from "./routes/home.route"
+import Shop from "./routes/shop.route"
+// React router
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+// Assigning the routing function to a variable 'router'
+const router = createBrowserRouter([
+  { // Main path from the app file has nested children
+    path: "/", 
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "shop",
+        element: <Shop />
+      },
+    ]
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+
 root.render(
+  // RouterProvider references the paths stored in the variable that points to the createBrowserRouter
   <React.StrictMode>
-    <App />
+      <RouterProvider router={router} />
   </React.StrictMode>
 );
 
