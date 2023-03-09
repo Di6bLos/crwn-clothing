@@ -1,3 +1,6 @@
+import SignUpForm from "../components/SignUpForm";
+// import { useEffect } from "react";
+// import { getRedirectResult } from "firebase/auth";
 import { signInWithGooglePopup, createUserDoc } from "../utils/firebase.utils";
 
 const SignIn = () => {
@@ -9,6 +12,7 @@ const SignIn = () => {
         return (
             <div>
                 <h1>Sign In Page</h1>
+                <SignUpForm />
                 <button onClick={logGoogleUser}>
                     Sign In with Google
                 </button>

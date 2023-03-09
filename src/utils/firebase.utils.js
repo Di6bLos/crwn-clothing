@@ -24,7 +24,7 @@ provider.setCustomParameters({
 
 export const auth = getAuth(App);
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
-
+export const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(App);
