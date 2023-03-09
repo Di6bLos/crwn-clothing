@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import Home from "./routes/home.route"
 import Shop from "./routes/shop.route"
+import SignIn from './routes/sign-in.route';
 // React router
 import {
   createBrowserRouter,
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "shop",
         element: <Shop />
+      },
+      {
+        path: "sign-in",
+        element: <SignIn />
       },
     ]
   }
