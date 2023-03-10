@@ -5,6 +5,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signInWithRedirect,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -40,11 +41,24 @@ export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, provider);
 
+// Authentication with Email
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
 };
+
+// Sign-in with email and password
+export const signInAuthUserWithEmail = (email,password) => {
+  if (!email || !password) return;
+
+   return signInWithEmailAndPassword(auth, email, password);
+
+}
+
+
+
+
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(App);
 

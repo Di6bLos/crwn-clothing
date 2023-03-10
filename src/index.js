@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import App from './App';
 import Home from "./routes/home.route"
 import Shop from "./routes/shop.route"
-import SignIn from './routes/sign-in.route';
+import Authentication from './routes/Authentication.route';
 // React router
 import {
   createBrowserRouter,
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         element: <Shop />
       },
       {
-        path: "sign-in",
-        element: <SignIn />
+        path: "auth",
+        element: <Authentication />
       },
     ]
   }
