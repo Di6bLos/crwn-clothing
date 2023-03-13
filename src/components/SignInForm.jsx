@@ -1,10 +1,14 @@
 import FormInput from "./FormInput";
 import ButtonInput from "./ButtonInput";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../contexts/User.context";
 import {
   signInWithGooglePopup,
   signInAuthUserWithEmail,
 } from "../utils/firebase.utils";
+
+
+
 const defaultFormFields = {
   email: "",
   password: "",
@@ -14,7 +18,6 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password} = formFields;
-  console.log(formFields);
 // Clears the form fields after submission
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -25,12 +28,14 @@ const SignInForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
+  const { setCurrentUser } = useContext(UserContext);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log("Fetching Data")
-      const response = await signInAuthUserWithEmail(email, password);
-      console.log(response.user.uid);
+      const {user} = await signInAuthUserWithEmail(email, password);
+      // console.log(response.user.uid);
+      setCurrentUser(user);
 
       resetFormFields();
     } catch(error) {
@@ -42,7 +47,7 @@ const SignInForm = () => {
 
   const submitGoogleSignIn = async () => {
     const response = await signInWithGooglePopup();
-    console.log(response);
+    // console.log(response);
   };
 
   return (

@@ -1,6 +1,8 @@
 import FormInput from "./FormInput";
 import ButtonInput from "./ButtonInput";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../contexts/User.context";
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDoc,
@@ -15,7 +17,7 @@ const defaultFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
-  console.log(formFields);
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -38,7 +40,10 @@ const SignUpForm = () => {
         email,
         password
       );
-      await createUserDoc(user, {displayName});
+      
+      setCurrentUser(user);
+      
+      await createUserDoc(user, { displayName });
 
       resetFormFields();
     } catch (error) {
@@ -51,43 +56,42 @@ const SignUpForm = () => {
       <h2>Sign Up With Email</h2>
       <span>Sign up with email and password</span>
       <form onSubmit={handleSubmit} className="sign-up-form">
-      
-          <FormInput
-            label="Name"
-            type="text"
-            id="display-name-input"
-            name="displayName"
-            value={displayName}
-            onChange={handleChange}
-            required
-          />
-          <FormInput
-            label="Email"
-            type="email"
-            id="email-input"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            required
-          />
-          <FormInput
-            label="Password"
-            type="password"
-            id="password-input"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            required
-          />
-          <FormInput
-            label="Confirm Password"
-            type="password"
-            id="confirm-password-input"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={handleChange}
-            required
-          />
+        <FormInput
+          label="Name"
+          type="text"
+          id="display-name-input"
+          name="displayName"
+          value={displayName}
+          onChange={handleChange}
+          required
+        />
+        <FormInput
+          label="Email"
+          type="email"
+          id="email-input"
+          name="email"
+          value={email}
+          onChange={handleChange}
+          required
+        />
+        <FormInput
+          label="Password"
+          type="password"
+          id="password-input"
+          name="password"
+          value={password}
+          onChange={handleChange}
+          required
+        />
+        <FormInput
+          label="Confirm Password"
+          type="password"
+          id="confirm-password-input"
+          name="confirmPassword"
+          value={confirmPassword}
+          onChange={handleChange}
+          required
+        />
 
         <ButtonInput buttonType={undefined} type="submit" value="Sign Up" />
       </form>

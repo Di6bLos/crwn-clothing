@@ -4,17 +4,16 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-text-decoration: none;
+  text-decoration: none;
   list-style: none;
 }
 *:disabled {
-background-color: grey;
+  background-color: grey;
 }
 html {
   scroll-behavior: smooth;
   height: 100%;
   overflow: hidden;
-
 }
 body {
   height: 100%;
@@ -26,10 +25,6 @@ picture {
 }
 
 /* ==================== */
-
-
-
-
 
 .categories-container {
   width: 100%;
@@ -126,7 +121,6 @@ picture {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    
 
     .nav-link {
       padding: 10px 15px;
@@ -173,7 +167,7 @@ $main-color: black;
     }
   }
 
-  input[type='password'] {
+  input[type="password"] {
     letter-spacing: 0.3em;
   }
 
@@ -198,13 +192,10 @@ $main-color: black;
   flex-direction: column;
   width: 380px;
   margin: 10px 0;
-
 }
 
 .sign-up-form {
-
 }
-
 
 // -------- Buttons -------
 
@@ -264,4 +255,10 @@ $main-color: black;
   width: 900px;
   justify-content: space-between;
   margin: 30px auto;
+}
+
+@media screen and (max-width: 900px) {
+  .authentication {
+    flex-direction: column;
+  }
 }

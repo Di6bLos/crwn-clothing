@@ -4,9 +4,11 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 // imports the components from the main app file and the routes
 import App from './App';
-import Home from "./routes/home.route"
-import Shop from "./routes/shop.route"
+import Home from "./routes/Home.route"
+import Shop from "./routes/Shop.route"
 import Authentication from './routes/Authentication.route';
+
+import { UserProvider } from './contexts/User.context';
 // React router
 import {
   createBrowserRouter,
@@ -41,9 +43,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   // RouterProvider references the paths stored in the variable that points to the createBrowserRouter
-  <React.StrictMode>
-      <RouterProvider router={router} />
-  </React.StrictMode>
+  // <React.StrictMode>
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

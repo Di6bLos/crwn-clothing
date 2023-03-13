@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   signInWithRedirect,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -56,7 +57,8 @@ export const signInAuthUserWithEmail = (email,password) => {
 
 }
 
-
+// Sign users out
+export const signOutUser = signOut(auth);
 
 
 // Initialize Cloud Firestore and get a reference to the service
