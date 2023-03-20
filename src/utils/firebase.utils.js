@@ -7,6 +7,7 @@ import {
   signInWithRedirect,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -88,3 +89,6 @@ export const createUserDoc = async (userAuth, additionalInfo) => {
   }
   return userDocRef;
 };
+
+// Observer Listener
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
