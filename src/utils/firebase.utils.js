@@ -11,9 +11,7 @@ import {
 } from "firebase/auth";
 import {
   getFirestore,
-  collection,
   doc,
-  addDoc,
   getDoc,
   setDoc,
 } from "firebase/firestore";
@@ -59,7 +57,7 @@ export const signInAuthUserWithEmail = (email,password) => {
 }
 
 // Sign users out
-export const signOutUser = signOut(auth);
+export const signOutUser = () => signOut(auth);
 
 
 // Initialize Cloud Firestore and get a reference to the service

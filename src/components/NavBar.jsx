@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../assets/crown.svg";
 
 const NavBar = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const handleSignOut = async () => {
-    await signOutUser;
-    setCurrentUser(null);
+    await signOutUser();
+    // setCurrentUser(null);
   };
   return (
     <header className="navigation">
