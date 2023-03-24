@@ -7,6 +7,7 @@ import App from "./App";
 import Home from "./routes/Home.route";
 import Shop from "./routes/Shop.route";
 import Authentication from "./routes/Authentication.route";
+import Checkout from "./routes/Checkout.route";
 
 import { UserProvider } from "./contexts/User.context";
 import { ProductProvider } from "./contexts/Product.context";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         path: "auth",
         element: <Authentication />,
       },
+      {
+        path: "checkout",
+        element: <Checkout />
+      }
     ],
   },
 ]);
