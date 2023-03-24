@@ -1,17 +1,21 @@
 import { useContext } from "react";
 import { UserContext } from "../contexts/User.context";
+import { CartContext } from "../contexts/Cart.context";
 import { signOutUser } from "../utils/firebase.utils";
 // Link is a react component that works like an anchor tag but links to the routes.
 import { Link } from "react-router-dom";
 // ReactComponent lets you import images and use them as components.
 import { ReactComponent as CrownLogo } from "../assets/crown.svg";
 
+import CartIcon from "./CartIcon";
+import CartDropdown from "./CartDropdown";
+
 const NavBar = () => {
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen } = useContext(CartContext);
 
   const handleSignOut = async () => {
     await signOutUser();
-    // setCurrentUser(null);
   };
   return (
     <header className="navigation">
@@ -32,7 +36,9 @@ const NavBar = () => {
             Sign In
           </Link>
         )}
+        <CartIcon />
       </div>
+      {isCartOpen && <CartDropdown />}
     </header>
   );
 };

@@ -1,52 +1,54 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
 // imports the components from the main app file and the routes
-import App from './App';
-import Home from "./routes/Home.route"
-import Shop from "./routes/Shop.route"
-import Authentication from './routes/Authentication.route';
+import App from "./App";
+import Home from "./routes/Home.route";
+import Shop from "./routes/Shop.route";
+import Authentication from "./routes/Authentication.route";
 
-import { UserProvider } from './contexts/User.context';
+import { UserProvider } from "./contexts/User.context";
+import { ProductProvider } from "./contexts/Product.context";
+import { CartProvider } from "./contexts/Cart.context";
 // React router
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Assigning the routing function to a variable 'router'
 const router = createBrowserRouter([
-  { // Main path from the app file has nested children
-    path: "/", 
+  {
+    // Main path from the app file has nested children
+    path: "/",
     element: <App />,
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
       },
       {
         path: "shop",
-        element: <Shop />
+        element: <Shop />,
       },
       {
         path: "auth",
-        element: <Authentication />
+        element: <Authentication />,
       },
-    ]
-  }
-])
+    ],
+  },
+]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   // RouterProvider references the paths stored in the variable that points to the createBrowserRouter
   // <React.StrictMode>
-      <UserProvider>
+  <UserProvider>
+    <ProductProvider>
+      <CartProvider>
         <RouterProvider router={router} />
-      </UserProvider>
+      </CartProvider>
+    </ProductProvider>
+  </UserProvider>
   // </React.StrictMode>
 );
 
