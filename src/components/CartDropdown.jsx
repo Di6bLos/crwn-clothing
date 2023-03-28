@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const CartDropdown = () => {
 
-    const { cartItems, isCartOpen, setIsCartOpen } = useContext(CartContext);
+    const { cartItems, setIsCartOpen } = useContext(CartContext);
 
     const closeDropdown = () => setIsCartOpen(false);
 
