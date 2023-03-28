@@ -7,7 +7,7 @@ import ProductCard from "../components/ProductCard";
 const Category = () => {
     const { category } = useParams();
     const {categories } = useContext(CategoriesContext);
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState(categories[category]);
 
     useEffect(()=> {
         setProducts(categories[category]);
@@ -15,7 +15,8 @@ const Category = () => {
 
     return (
         <div className="category-container">
-           { products.map((product) => <ProductCard key={product.id} product={product} />)}
+           {products &&
+            products.map((product) => <ProductCard key={product.id} product={product} />)}
         </div>
     )
 }
