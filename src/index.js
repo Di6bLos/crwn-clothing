@@ -8,7 +8,7 @@ import Home from "./routes/Home.route";
 import Shop from "./routes/Shop.route";
 import Authentication from "./routes/Authentication.route";
 import Checkout from "./routes/Checkout.route";
-import CategoriesPreview from "./components/CategoriesPreview";
+import CategoriesPreview from "./routes/CategoriesPreview.route";
 import Category from "./routes/Category.route";
 
 import { UserProvider } from "./contexts/User.context";

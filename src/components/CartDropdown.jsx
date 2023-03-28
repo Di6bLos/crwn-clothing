@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 
 const CartDropdown = () => {
 
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, isCartOpen, setIsCartOpen } = useContext(CartContext);
+
+    const closeDropdown = () => setIsCartOpen(false);
 
     return (
         <div className="cart-dropdown-container">
@@ -17,7 +19,7 @@ const CartDropdown = () => {
             }
             </div>
             <Link to={"/checkout"}>
-                <ButtonInput value={"Go To Checkout"} />
+                <ButtonInput value={"Go To Checkout"} onClick={closeDropdown}/>
             </Link>
         </div>
     )
