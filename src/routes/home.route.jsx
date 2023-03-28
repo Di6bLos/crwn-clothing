@@ -1,4 +1,4 @@
-import CategoryList from "../components/Directory";
+import Directory from "../components/Directory";
 // Home route serves the components that appear when the user first visits the site.
 // it is then imported by App.js along with all the other route components that make up the "pages" of the site.
 const Home = () => {
@@ -32,7 +32,7 @@ const Home = () => {
 
   return (
     <div className="main">
-      <CategoryList categories={categories} />
+      <Directory categories={categories} />
     </div>
   );
 };
