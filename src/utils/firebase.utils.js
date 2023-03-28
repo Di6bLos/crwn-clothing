@@ -13,8 +13,13 @@ import {
   getFirestore,
   doc,
   getDoc,
+  getDocs,
   setDoc,
+  collection,
+  writeBatch,
+  query,
 } from "firebase/firestore";
+
 
 // Links to the proper database
 const firebaseConfig = {
@@ -88,5 +93,34 @@ export const createUserDoc = async (userAuth, additionalInfo) => {
   return userDocRef;
 };
 
-// Observer Listener
+// Observer Listener for any change in the User/Log state
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
+
+
+// Adding collections to the firestore database
+export const addCollectionAndDocs = async (collectionKey, objectToAdd) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectToAdd.forEach(object => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+
+  await batch.commit();
+  console.log("Batch completed");
+}
+
+export const getCategoriesAndDocs = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
+}

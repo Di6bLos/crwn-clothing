@@ -8,9 +8,11 @@ import Home from "./routes/Home.route";
 import Shop from "./routes/Shop.route";
 import Authentication from "./routes/Authentication.route";
 import Checkout from "./routes/Checkout.route";
+import CategoriesPreview from "./components/CategoriesPreview";
+import Category from "./routes/Category.route";
 
 import { UserProvider } from "./contexts/User.context";
-import { ProductProvider } from "./contexts/Product.context";
+import { CategoriesProvider } from "./contexts/Categories.context";
 import { CartProvider } from "./contexts/Cart.context";
 // React router
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -29,6 +31,16 @@ const router = createBrowserRouter([
       {
         path: "shop",
         element: <Shop />,
+        children: [
+          {
+            index: true,
+            element: <CategoriesPreview />,
+          },
+          {
+            path: ":category",
+            element: <Category />,
+          },
+        ],
       },
       {
         path: "auth",
@@ -36,8 +48,8 @@ const router = createBrowserRouter([
       },
       {
         path: "checkout",
-        element: <Checkout />
-      }
+        element: <Checkout />,
+      },
     ],
   },
 ]);
@@ -48,11 +60,11 @@ root.render(
   // RouterProvider references the paths stored in the variable that points to the createBrowserRouter
   // <React.StrictMode>
   <UserProvider>
-    <ProductProvider>
+    <CategoriesProvider>
       <CartProvider>
         <RouterProvider router={router} />
       </CartProvider>
-    </ProductProvider>
+    </CategoriesProvider>
   </UserProvider>
   // </React.StrictMode>
 );
