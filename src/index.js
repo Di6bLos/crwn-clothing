@@ -4,12 +4,12 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 // imports the components from the main app file and the routes
 import App from "./App";
-import Home from "./routes/Home.route";
-import Shop from "./routes/Shop.route";
-import Authentication from "./routes/Authentication.route";
-import Checkout from "./routes/Checkout.route";
-import CategoriesPreview from "./routes/CategoriesPreview.route";
-import Category from "./routes/Category.route";
+import Home from "./routes/home.route";
+import Shop from "./routes/shop.route";
+import Authentication from "./routes/authentication.route";
+import Checkout from "./routes/checkout.route";
+import CategoriesPreview from "./routes/categoriesPreview.route";
+import Category from "./routes/category.route";
 
 import { UserProvider } from "./contexts/User.context";
 import { CategoriesProvider } from "./contexts/Categories.context";
